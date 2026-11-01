@@ -9,7 +9,8 @@
 > code is private; this repository holds the case study.
 
 <p align="center">
-  <b>Live:</b> <a href="https://adaptivesystems.dev/live">live numbers &amp; activity</a> ·
+  <b>Live:</b> <a href="https://adaptivesystems.dev/one-pager">one-pager</a> ·
+  <a href="https://adaptivesystems.dev/live">live numbers &amp; activity</a> ·
   <a href="https://adaptivesystems.dev/platform">product page</a> ·
   <a href="https://adaptivesystems.dev/platform/try">score a lead yourself</a> ·
   <a href="https://status.adaptivesystems.dev/status/stack">status page</a> ·
