@@ -144,6 +144,9 @@ flowchart LR
   cache/rate-limit key, and generated tests that check every client pair cannot read each other.
 - **SSRF-safe ingestion**: public URL ingestion checks every resolved address and redirect hop
   (no loopback, private, link-local, metadata or mapped forms) and pins the connection to the checked IP.
+- **Bot protection on the contact form**: Cloudflare Turnstile (managed mode) is checked server-side before a
+  message is stored; a missing, invalid or other-site token is refused, while a Cloudflare outage lets the message
+  through (a lost lead costs more than one spam message; honeypot and rate limits still apply).
 - **Signed webhooks**: the voice post-call webhook is HMAC-verified with a replay window; voice tools
   need a per-client secret.
 - **Minimal public surface**: the API host serves only machine endpoints (everything else 404), the
@@ -173,7 +176,7 @@ flowchart LR
 | Voice tools | **p95 ≈ 25 ms** | as ElevenLabs calls them over the public host |
 | Real voice call test | **17/17** | one real call: docs-only question, two injection attempts, book + cancel in the same call, DB + signed webhook verified |
 | Chat turn | **1–4 ms** when code handles it · **1.3–3.7 s** with the router model | live, 2026-10-29 |
-| Automated checks | **802 static · 102 per-client live · 39/39 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
+| Automated checks | **799 static · 102 per-client live · 38/38 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
 
 ## Deployment
 
