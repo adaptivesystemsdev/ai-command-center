@@ -11,6 +11,7 @@
 <p align="center">
   <b>Live:</b> <a href="https://adaptivesystems.dev/live">live numbers &amp; activity</a> ·
   <a href="https://adaptivesystems.dev/platform">product page</a> ·
+  <a href="https://adaptivesystems.dev/platform/try">score a lead yourself</a> ·
   <a href="https://status.adaptivesystems.dev/status/stack">status page</a> ·
   <a href="https://adaptivesystems.dev/">adaptivesystems.dev</a><br>
   <i>Single VPS, Docker Compose, nginx + Let's Encrypt, Uptime Kuma monitoring.</i><br>
@@ -144,6 +145,11 @@ flowchart LR
   cache/rate-limit key, and generated tests that check every client pair cannot read each other.
 - **SSRF-safe ingestion**: public URL ingestion checks every resolved address and redirect hop
   (no loopback, private, link-local, metadata or mapped forms) and pins the connection to the checked IP.
+- **Public lead-scoring demo** (`/platform/try`): anyone can write an enquiry and watch the real pipeline score
+  it (sub-scores, extracted budget / timeline, every gate, the reply). Switched on from the app; every score needs
+  a fresh Cloudflare Turnstile token (fail closed), 5 an hour / 15 a day per visitor and 150 a day overall (limits
+  fail closed: they guard a paid model), the paid chain only, the answer built from an allowlist, and the lead is a
+  demo: no alerts, no CRM webhook, out of the KPIs.
 - **Bot protection on the contact form**: Cloudflare Turnstile (managed mode) is checked server-side before a
   message is stored; a missing, invalid or other-site token is refused, while a Cloudflare outage lets the message
   through (a lost lead costs more than one spam message; honeypot and rate limits still apply).
