@@ -16,7 +16,7 @@
   <a href="https://status.adaptivesystems.dev/status/stack">status page</a> ·
   <a href="https://adaptivesystems.dev/">adaptivesystems.dev</a><br>
   <i>Single VPS, Docker Compose, nginx + Let's Encrypt, Uptime Kuma monitoring.</i><br>
-  <i>Sibling product: <a href="https://github.com/adaptivesystemsdev/docket-invoice-intake">Docket</a>, invoice and document intake on the same principles.</i>
+  <i>Sibling products on the same principles: <a href="https://github.com/adaptivesystemsdev/docket-invoice-intake">Docket</a> (invoice intake) and <a href="https://github.com/adaptivesystemsdev/dossier-applicant-verification">Dossier</a> (applicant document verification).</i>
 </p>
 
 <p align="center">
@@ -218,5 +218,11 @@ an explicit confirmation.
   the first mails still landed in spam: a new domain and IP have to earn trust.
 
 ---
+
+**Also from us:** [Docket](https://github.com/adaptivesystemsdev/docket-invoice-intake) (invoice intake) ·
+[Dossier](https://github.com/adaptivesystemsdev/dossier-applicant-verification) (applicant document verification) ·
+all three on
+[one page](https://adaptivesystems.dev/one-pager). Need something else built to the same standard?
+[Hire us for a custom build](https://adaptivesystems.dev/contact?topic=custom).
 
 *Portfolio case study. The live app is private; a walkthrough is available on request via Upwork.*
