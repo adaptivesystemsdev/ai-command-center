@@ -38,6 +38,12 @@ engagements are), so it agrees on the clear cases, and it calls most leads "mode
 safety net for a gate bug, not a second scorer. Docket and Dossier use the same overlay; in Dossier it is measured on
 a published eval (it agreed with the checks on 42 of 44 packs).
 
+**Fixed on 2026-11-02:** the stored "agreement" said "agree" unless Jev had changed the route, i.e. always. It is now
+measured against the code's decision (a lead taken on: Jev agrees when the risk is low or engagement likely; any
+other route: the reverse), with the effect recorded (none / noted / sent to a person), the same record Docket and
+Dossier carry. The inbox order was left alone: there are no lead outcomes yet (booked calls, won work) to prove a
+different order better.
+
 ## 2. Evals and measurement
 
 - **Golden tests must pass with the keyword fallback off and the primary model forced off.** Keyword lists hid real
