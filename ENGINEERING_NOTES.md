@@ -49,7 +49,7 @@ The full golden suite (216 checks over real-shaped leads) on each candidate, thr
 
 | Model | Golden checks | What failed |
 |---|---|---|
-| **GPT-6 Luna** (now first) | **215–214 / 216** | reply wording on two leads |
+| **GPT-6 Luna** (now first) | **214–215 / 216** | reply wording on two leads |
 | DeepSeek V4.1 Flash (second) | 211–213 / 216 | one hot lead scored 34; reply wording |
 | Gemini 3.8 Flash (previous first, now third) | 210 / 216 | four leads missed the 8 s deadline |
 
