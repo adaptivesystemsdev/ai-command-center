@@ -178,12 +178,12 @@ flowchart LR
 
 | Metric | Value | Notes |
 |---|---|---|
-| Lead qualification, end to end | **p50 2.8 s · p95 4.2 s** | live benchmark, 2026-10-27, Gemini 3.8 Flash primary |
+| Lead qualification, end to end | **median 3.0 s · p95 12 s** | 281 real leads from the audit log, 2026-10-29 to 2026-11-01 (the p95 is a model that missed its deadline and the next one answered); a 2026-10-27 benchmark on the primary model alone gave p50 2.8 s · p95 4.2 s |
 | Deterministic policy gate | **≈ 10 ms** | live average, no model call |
 | Voice tools | **p95 ≈ 25 ms** | as ElevenLabs calls them over the public host |
 | Real voice call test | **17/17** | one real call: docs-only question, two injection attempts, book + cancel in the same call, DB + signed webhook verified |
 | Chat turn | **1–4 ms** when code handles it · **1.3–3.7 s** with the router model | live, 2026-10-29 |
-| Automated checks | **799 static · 102 per-client live · 38/38 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
+| Automated checks | **807 static · 102 per-client live · 45/45 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
 
 ## Deployment
 
