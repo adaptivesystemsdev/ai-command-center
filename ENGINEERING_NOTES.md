@@ -44,6 +44,19 @@ other route: the reverse), with the effect recorded (none / noted / sent to a pe
 Dossier carry. The inbox order was left alone: there are no lead outcomes yet (booked calls, won work) to prove a
 different order better.
 
+### Choosing the lead model again (2026-11-02)
+The full golden suite (216 checks over real-shaped leads) on each candidate, through OpenRouter:
+
+| Model | Golden checks | What failed |
+|---|---|---|
+| **GPT-6 Luna** (now first) | **215–214 / 216** | reply wording on two leads |
+| DeepSeek V4.1 Flash (second) | 211–213 / 216 | one hot lead scored 34; reply wording |
+| Gemini 3.8 Flash (previous first, now third) | 210 / 216 | four leads missed the 8 s deadline |
+
+Luna costs about a sixth of Gemini 3.8 Flash per lead and was the most accurate. The chat assistant runs DeepSeek
+first (≈ 2 s, cheapest, 45/45 support evals with the same knowledge base). The cheapest model on the price list,
+Gemini 2.5 Flash-Lite, was refused "rate-limited upstream" on most calls in bursts and was not used.
+
 ## 2. Evals and measurement
 
 - **Golden tests must pass with the keyword fallback off and the primary model forced off.** Keyword lists hid real
