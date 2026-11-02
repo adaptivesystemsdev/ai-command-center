@@ -197,6 +197,8 @@ an explicit confirmation.
 
 ## What I learned
 
+The long version, with dates, numbers and what didn't work: [ENGINEERING_NOTES.md](ENGINEERING_NOTES.md).
+
 - **Config-driven beats prompt-driven.** Moving hours, prices, scoring weights and reply templates
   out of prompts and code into validated config removed a whole class of "the bot said the wrong thing".
 - **Hot reload must reload the rules too.** Configs reloaded live but their schemas were loaded once —
