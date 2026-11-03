@@ -2,7 +2,7 @@
 
 > **Case study.** A self-hosted AI automation engine that is configured per business, not rebuilt per
 > business: a support bot grounded in the client's own documents and hard facts, appointment booking
-> into the business's own Google Calendar, an AI voice receptionist, a website chat widget with a call
+> into the business's own Google Calendar, an AI voice receptionist in the browser and on a real phone number, a website chat widget with a call
 > button and the same assistant on Telegram, contact-form capture, confirmation emails from our own mail
 > server, and lead scoring with a deterministic policy gate, all run from one private operations app.
 > Every number on this page was measured on the running system. The source
@@ -45,14 +45,15 @@ against a schema and refuses to serve a broken one, while the other clients keep
 |---|---|
 | **support** | Answers from the client's documents (RAG) **and** from hard facts in the client's profile (hours, prices, address, policies). Multi-part questions are split and each part is answered. Every answer carries checkable citations; anything not in the knowledge base is refused. |
 | **booking** | Availability, booking and cancellation driven by the profile's opening hours, holidays and services, minus busy time in the business's own **Google Calendar** (each booking is written there as an event, and it is two-way: an appointment the team moves or deletes in the calendar moves or cancels the booking and emails the customer); conflicts return alternatives, never a raw error. Customers get a confirmation, a reminder the day before and two hours before, and a signed one-click cancel link. |
-| **voice** | An ElevenLabs voice receptionist built **from the config** by one idempotent script: prompt, facts document, webhook tools, signed post-call webhook. |
+| **voice** | An ElevenLabs voice receptionist built **from the config** by one idempotent script: prompt, facts document, webhook tools, signed post-call webhook. The same agent answers the business's **own phone number** (imported by a second script; caller ID makes a phone lead reachable). Proven on a US Twilio number on 2026-11-03: our own agent, Alex, answered a real call; the number is shown on the website only while the owner's switch in Settings is on. |
 | **lead_scoring** | LLM sub-scores with evidence quotes → deterministic TypeScript policy gate → route (full / starter / needs_info / reject / review) → reply → audit log → Telegram alert. |
 | **chat** | One script tag on any website. The model only routes (intent, day, time, service); code answers, books and cancels. A booking needs an explicit yes on a summary. For businesses with lead scoring, a described project becomes one audited, scored lead. Businesses with a voice agent get a **Call** button in the same widget: the voice SDK loads only when pressed and the live transcript appears in the chat. The same assistant runs as the business's own **Telegram bot** (signed webhook; the contact step uses Telegram's verified share-phone button). |
 | **forms** | Any website form (WordPress, Webflow, Wix, plain HTML) POSTs to a per-client secret URL; fields are recognised generically; the submission is scored (lead scoring on) or stored and alerted. |
-| **integrations** | One universal, signed webhook per business: every lead, booking, form and call goes to the business's own CRM, Zapier, Make or n8n (a ready n8n recipe writes them to Google Sheets). |
+| **integrations** | One universal, signed webhook per business: every lead, booking, form and call goes to the business's own CRM, Zapier, Make or n8n. Ready n8n recipes check the signature first, then write to **HubSpot** (contact, deal at the route's stage, call, meeting) or **HighLevel** (contact, opportunity, notes, an appointment in a HighLevel calendar), or append to Google Sheets; the HubSpot and HighLevel recipes were tested on 2026-11-03 against a real portal and a sandbox sub-account, every record read back through their APIs. |
 
 Three clients run from config today: our own lead intake, plus two **fictional** demo businesses (a
-dental & physio clinic and a plumbing company) used to prove the onboarding path. Alerts go to the
+dental & physio clinic and a plumbing company) used to prove the onboarding path. They are kept apart:
+our own business comes first in every list, and demo traffic never reaches its inbox, alerts or counters. Alerts go to the
 business by email, Telegram or Slack (chosen per business), with a daily digest and a reminder when a
 lead has waited 24 hours without a reply.
 
@@ -183,7 +184,8 @@ flowchart LR
 | Voice tools | **p95 ≈ 25 ms** | as ElevenLabs calls them over the public host |
 | Real voice call test | **17/17** | one real call: docs-only question, two injection attempts, book + cancel in the same call, DB + signed webhook verified |
 | Chat turn | **1–4 ms** when code handles it · **1.3–3.7 s** with the router model | live, 2026-10-29 |
-| Automated checks | **807 static · 102 per-client live · 45/45 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
+| Published eval | **20/20** lead decisions · **45/45** held-out support answers · 214 of 216 assertions in those leads (99.1 %) | 2026-11-03, written test leads with known decisions + held-out questions with known answers for 3 businesses, through the production model chain (median 2.1 s); the live numbers are the `eval` object in `https://api.adaptivesystems.dev/public/stats` |
+| Automated checks | **832 static · 101 per-client live · 45/45 support evals · 42 chat · 15 forms · 5 calendar · 21 voice · 90 app** | run after every change; a 15-case live smoke set during development |
 
 ## Deployment
 
